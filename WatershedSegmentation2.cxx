@@ -4,7 +4,7 @@
 #include "itkScalarToRGBPixelFunctor.h"
 #include "itkUnaryFunctorImageFilter.h"
 #include "itkGradientMagnitudeRecursiveGaussianImageFilter.h"
-
+#include "header.h"
 using namespace std;
 
 int main(char* input, char* output, char* l_Threshold, char* scale) {
