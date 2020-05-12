@@ -7,12 +7,11 @@
 #include "itksys/SystemTools.hxx"
 #include "header.h"
 
-int
-main(char * input, char * output){
+
+void ImageReadDicomSeriesWrite(char * input, char * output){
  if (argc < 3){
     std::cerr << "Usage: " << argv[0];
     std::cerr << " InputImage  OutputDicomDirectory" << std::endl;
-    return EXIT_FAILURE;
   }
   
   using PixelType = signed short;
@@ -28,7 +27,6 @@ main(char * input, char * output){
   catch (const itk::ExceptionObject & excp){
     std::cerr << "Exception thrown while writing the image" << std::endl;
     std::cerr << excp << std::endl;
-    return EXIT_FAILURE;
   }
   
   using ImageIOType = itk::GDCMImageIO;
@@ -78,8 +76,5 @@ main(char * input, char * output){
   catch (const itk::ExceptionObject & excp){
     std::cerr << "Exception thrown while writing the series " << std::endl;
     std::cerr << excp << std::endl;
-    return EXIT_FAILURE;
   }
- 
-  return EXIT_SUCCESS;
 }
