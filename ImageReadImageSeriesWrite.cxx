@@ -7,7 +7,7 @@
 #include "header.h"
  
 int
-main(int argc, char * argv[]){
+main(char * input, char * output, char * extension){
   if (argc < 4){
     std::cerr
       << "Usage: ImageReadImageSeriesWrite inputFile outputPrefix outputExtension"
@@ -18,7 +18,7 @@ main(int argc, char * argv[]){
   using ReaderType = itk::ImageFileReader<ImageType>;
   
   ReaderType::Pointer reader = ReaderType::New();
-  reader->SetFileName(argv[1]);
+  reader->SetFileName(input]);
   
   using Image2DType = itk::Image<unsigned char, 2>;
   using WriterType = itk::ImageSeriesWriter<ImageType, Image2DType>;
@@ -29,9 +29,9 @@ main(int argc, char * argv[]){
   using NameGeneratorType = itk::NumericSeriesFileNames;
   NameGeneratorType::Pointer nameGenerator = NameGeneratorType::New();
 
-  std::string format = argv[2];
+  std::string format = output;
   format += "%03d.";
-  format += argv[3]; 
+  format += extension; 
   nameGenerator->SetSeriesFormat(format.c_str());
   
   try{
