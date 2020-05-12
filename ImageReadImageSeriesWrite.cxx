@@ -6,13 +6,12 @@
 #include "itkNumericSeriesFileNames.h"
 #include "header.h"
  
-int
-main(char * input, char * output, char * extension){
+
+void ImageReadImageSeriesWrite(char * input, char * output, char * extension){
   if (argc < 4){
     std::cerr
       << "Usage: ImageReadImageSeriesWrite inputFile outputPrefix outputExtension"
       << std::endl;
-    return EXIT_FAILURE;
   }
   using ImageType = itk::Image<unsigned char, 3>;
   using ReaderType = itk::ImageFileReader<ImageType>;
@@ -62,7 +61,5 @@ main(char * input, char * output, char * extension){
   catch (const itk::ExceptionObject & excp){
     std::cerr << "Exception thrown while reading the image" << std::endl;
     std::cerr << excp << std::endl;
-  }
-  
-  return EXIT_SUCCESS;
+  } 
 }
