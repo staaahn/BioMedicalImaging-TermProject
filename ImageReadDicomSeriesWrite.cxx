@@ -1,3 +1,13 @@
+#include "itkGDCMImageIO.h"
+#include "itkNumericSeriesFileNames.h"
+#include "itkImageFileReader.h"
+#include "itkImageSeriesWriter.h"
+#include "itkMetaDataObject.h"
+ 
+#include <vector>
+#include "itksys/SystemTools.hxx"
+
+
 int
 main(int argc, char * argv[])
 {
