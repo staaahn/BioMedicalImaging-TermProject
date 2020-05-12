@@ -10,7 +10,7 @@
 #include "itkCastImageFilter.h"
 #include "itkSquaredDifferenceImageFilter.h"
 #include "itkTransformFileReader.h"
-#include "ImageProcessing.h"
+#include "header.h"
 #include "itkCommand.h"
 
 class CommandIterationUpdate : public itk::Command {
