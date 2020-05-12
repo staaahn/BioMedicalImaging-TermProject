@@ -1,7 +1,5 @@
 #include "header.h"
 
-
-
 void main( int argc, char *argv[] ) {
     while (input != 0) {
     cout << "Please select an option: \n"
@@ -40,7 +38,7 @@ void main( int argc, char *argv[] ) {
           cout << "You selected 3D -> Dicom series" << endl << "Working..." << endl;
           cout << "Please fill the following fields in order: input image, output directory" << endl;
           cin >> input, output;
-          ImageReadDicomSeriesWrite(input.c_str(), output.c_str();
+          ImageReadDicomSeriesWrite(input.c_str(), output.c_str());
         }
         if(input == 2) {
           string input, output, extension;
@@ -48,8 +46,7 @@ void main( int argc, char *argv[] ) {
           cout << "Please fill the following fields in order: 3D image file, output, extension" << endl;
           cin >> input, output, extension;
           ImageReadImageSeriesWrite(input.c_str(), output.c_str(), extension.c_str());
-        }
-
+       }
     }
   }
 }
