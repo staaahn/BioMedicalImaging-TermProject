@@ -7,7 +7,7 @@
 #include "header.h"
 using namespace std;
 
-int main(char* input, char* output, char* l_Threshold, char* scale) {
+int WatershedSegmentation2(char* input, char* output, char* l_Threshold, char* scale) {
  
   using InternalPixelType = float;
   using RGBPixelType = itk::RGBPixel<unsigned char>;
