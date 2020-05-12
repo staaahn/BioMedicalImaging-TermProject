@@ -7,13 +7,7 @@
 
 using namespace std;
 
-int main(int argc, char * argv[]) {
-  if (argc < 5) {
-    cerr << "Missing Parameters " << endl;
-    cerr << "Usage: " << argv[0];
-    cerr << " inputImage  outputImage lowerThreshold  outputScaleLevel" << endl;
-    return 0;
-  }
+int main(char* input, char* output, char* l_Threshold, char* scale) {
  
   using InternalPixelType = float;
   using RGBPixelType = itk::RGBPixel<unsigned char>;
@@ -29,8 +23,8 @@ int main(int argc, char * argv[]) {
   ReaderType::Pointer reader = ReaderType::New();
   WriterType::Pointer writer = WriterType::New();
  
-  reader->SetFileName(argv[1]);
-  writer->SetFileName(argv[2]);
+  reader->SetFileName(input);
+  writer->SetFileName(output);
  
   //Instantiate the GradientMagnitude image filter
   using GradientMagnitudeFilterType = itk::GradientMagnitudeRecursiveGaussianImageFilter<InternalImageType, InternalImageType>;
@@ -42,8 +36,8 @@ int main(int argc, char * argv[]) {
   using WatershedFilterType = itk::WatershedImageFilter<InternalImageType>;
   WatershedFilterType::Pointer watershedFilter = WatershedFilterType::New();
   watershedFilter->SetInput(gradienMagnitudeFilter->GetOutput());
-  watershedFilter->SetThreshold(std::stod(argv[3]));
-  watershedFilter->SetLevel(std::stod(argv[4]));
+  watershedFilter->SetThreshold(std::stod(l_Threshold));
+  watershedFilter->SetLevel(std::stod(scale));
  
 
   //  Instantiate the filter that will encode the label image into a color image (random color attribution).
@@ -57,8 +51,8 @@ int main(int argc, char * argv[]) {
   try {
     writer->Update(); }
   catch (const itk::ExceptionObject & excep) {
-    std::cerr << "Exception caught !" << std::endl;
-    std::cerr << excep << std::endl;
+    cerr << "Exception caught !" << endl;
+    cerr << excep << endl;
     return 0;
   }
   return 1;
