@@ -8,7 +8,7 @@
 #include "header.h"
 
 int
-main(int argc, char * argv[]){
+main(char * input, char * output){
  if (argc < 3){
     std::cerr << "Usage: " << argv[0];
     std::cerr << " InputImage  OutputDicomDirectory" << std::endl;
@@ -21,7 +21,7 @@ main(int argc, char * argv[]){
   using ReaderType = itk::ImageFileReader<ImageType>;
   
   ReaderType::Pointer reader = ReaderType::New();
-  reader->SetFileName(argv[1]);
+  reader->SetFileName(input);
   try {
    reader->Update();
   }
@@ -35,7 +35,7 @@ main(int argc, char * argv[]){
   using NamesGeneratorType = itk::NumericSeriesFileNames;
   
   ImageIOType::Pointer gdcmIO = ImageIOType::New();
-  const char * outputDirectory = argv[2];
+  const char * outputDirectory = output;
   itksys::SystemTools::MakeDirectory(outputDirectory);
   using OutputPixelType = signed short;
   constexpr unsigned int OutputDimension = 2;
