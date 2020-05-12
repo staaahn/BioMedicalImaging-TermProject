@@ -5,8 +5,9 @@ void main( int argc, char *argv[] ) {
     cout << "Please select an option: \n"
          << "1. WatershedSegmentation\n" 
          << "2. Registration (B-Spline)\n"
+        <<"3. Image Processing\n"
          << "EXIT: 0" << endl;
-    cin >> choice;
+    cin >> input;
     cout << endl;
 
     if(input == 1){
